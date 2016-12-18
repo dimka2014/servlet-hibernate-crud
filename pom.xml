@@ -1,11 +1,11 @@
 <project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
          xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd">
     <modelVersion>4.0.0</modelVersion>
-    <groupId>com.example.employees</groupId>
-    <artifactId>employees-app</artifactId>
-    <packaging>war</packaging>
+    <groupId>top.belyaev</groupId>
+    <artifactId>crud</artifactId>
+    <packaging>jar</packaging>
     <version>1.0-SNAPSHOT</version>
-    <name>employees-app Maven Webapp</name>
+    <name>Crud</name>
     <url>http://maven.apache.org</url>
     <properties>
         <tomcat.version>7.0.57</tomcat.version>
@@ -64,11 +64,15 @@
         </dependency>
     </dependencies>
     <build>
-        <finalName>employees-app</finalName>
+        <finalName>crud</finalName>
         <resources>
             <resource>
                 <directory>src/main/webapp</directory>
                 <targetPath>META-INF/resources</targetPath>
+            </resource>
+            <resource>
+                <directory>src/main/resources</directory>
+                <targetPath>resources</targetPath>
             </resource>
         </resources>
         <plugins>
@@ -79,7 +83,7 @@
                     <descriptorRefs>
                         <descriptorRef>jar-with-dependencies</descriptorRef>
                     </descriptorRefs>
-                    <finalName>employees-app-${project.version}</finalName>
+                    <finalName>crud</finalName>
                     <archive>
                         <manifest>
                             <mainClass>top.belyaev.Main</mainClass>
@@ -112,7 +116,7 @@
                             <workingDirectory>/tmp</workingDirectory>
                             <arguments>
                                 <argument>-jar</argument>
-                                <argument>${basedir}/target/employees-app-1.0-SNAPSHOT-jar-with-dependencies.jar
+                                <argument>${basedir}/target/crud-jar-with-dependencies.jar
                                 </argument>
                             </arguments>
                         </configuration>
