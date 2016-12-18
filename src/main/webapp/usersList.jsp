@@ -13,7 +13,10 @@
 <div class="container">
 
     <div class="panel panel-default">
-        <div class="panel-heading"><h3>Object Store</h3></div>
+        <div class="panel-heading">
+            <h3>Users</h3>
+            <a class="btn btn-default" href="/users">Create user</a>
+        </div>
         <div class="panel-body">
             <table class="table table-condensed" style="border-collapse:collapse;">
 
@@ -25,6 +28,8 @@
                     <th>Birth Date</th>
                     <th>Phone</th>
                     <th>Organization</th>
+                    <th>Edit</th>
+                    <th>Delete</th>
                 </tr>
                 </thead>
 
@@ -37,9 +42,20 @@
                         <td>${user.getBirthDateString()}</td>
                         <td>${user.getPhone()}</td>
                         <td>${user.getOrganization()}</td>
+                        <td>
+                            <a class="btn btn-default" href="/users?id=${user.getId()}">Edit</a>
+                        </td>
+                        <td>
+                            <form action="/delete" method="post">
+                                <input name="id" type="hidden" value="${user.getId()}"/>
+                                <input name="type" type="hidden" value="user"/>
+                                <button class="btn btn-default" type="submit">Delete</button>
+                            </form>
+                        </td>
                     </tr>
                     <tr>
-                        <td colspan="6" class="hiddenRow">
+
+                        <td colspan="8" class="hiddenRow">
                             <div class="accordian-body collapse" id="tableuser${user.getId()}">
                                 <table class="table table-striped">
                                     <thead>

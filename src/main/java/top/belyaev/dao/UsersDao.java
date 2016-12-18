@@ -44,4 +44,11 @@ public class UsersDao {
         session.saveOrUpdate(user);
         transaction.commit();
     }
+
+    public void delete(User user) {
+        Session session = sessionFactory.getCurrentSession();
+        Transaction transaction = session.beginTransaction();
+        session.delete(user);
+        transaction.commit();
+    }
 }
