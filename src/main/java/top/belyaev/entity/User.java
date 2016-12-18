@@ -5,6 +5,7 @@ import lombok.ToString;
 import org.hibernate.annotations.Type;
 
 import javax.persistence.*;
+import java.text.SimpleDateFormat;
 import java.util.*;
 
 @Entity
@@ -36,4 +37,12 @@ public class User {
     @OneToMany(fetch = FetchType.EAGER, mappedBy = "user", cascade = CascadeType.ALL)
     private List<TrafficSource> trafficSources = new ArrayList<TrafficSource>();
 
+    public String getBirthDateString() {
+        if (this.getBirthDate() == null) {
+            return "";
+        }
+
+        SimpleDateFormat formatter = new SimpleDateFormat("yyyy-MM-dd");
+        return formatter.format(this.getBirthDate());
+    }
 }

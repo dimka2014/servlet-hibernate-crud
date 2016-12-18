@@ -3,7 +3,7 @@
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <html lang="en">
 <head>
-    <title>Bootstrap Example</title>
+    <title>Users</title>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css"
@@ -34,7 +34,7 @@
                         <td>${user.getId()}</td>
                         <td>${user.getFirstName()}</td>
                         <td>${user.getLastName()}</td>
-                        <td>${user.getBirthDate()}</td>
+                        <td>${user.getBirthDateString()}</td>
                         <td>${user.getPhone()}</td>
                         <td>${user.getOrganization()}</td>
                     </tr>

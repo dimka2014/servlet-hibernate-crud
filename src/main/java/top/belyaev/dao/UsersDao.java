@@ -37,4 +37,11 @@ public class UsersDao {
         transaction.commit();
         return user;
     }
+
+    public void save(User user) {
+        Session session = sessionFactory.getCurrentSession();
+        Transaction transaction = session.beginTransaction();
+        session.saveOrUpdate(user);
+        transaction.commit();
+    }
 }

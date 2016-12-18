@@ -11,7 +11,7 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 @WebServlet(
-        name = "UsersListServlet",
+        name = "UserManageServlet",
         urlPatterns = {"/"}
 )
 public class UsersListServlet extends HttpServlet {
