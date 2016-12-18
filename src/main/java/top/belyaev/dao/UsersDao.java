@@ -24,7 +24,7 @@ public class UsersDao {
     public List<User> findAll() {
         Session session = sessionFactory.getCurrentSession();
         Transaction transaction = session.beginTransaction();
-        Criteria criteria = session.createCriteria(User.class);
+        Criteria criteria = session.createCriteria(User.class).setResultTransformer(Criteria.DISTINCT_ROOT_ENTITY);
         List<User> result = (List<User>) criteria.list();
         transaction.commit();
         return result;
