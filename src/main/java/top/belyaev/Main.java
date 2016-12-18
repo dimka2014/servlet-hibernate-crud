@@ -1,4 +1,4 @@
-package launch;
+package top.belyaev;
 
 import java.io.File;
 import java.net.URISyntaxException;
