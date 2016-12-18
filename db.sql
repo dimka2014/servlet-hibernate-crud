@@ -12,7 +12,7 @@ CREATE TABLE `traffic_source` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
   `user_id` int(11) NOT NULL,
   `title` varchar(255) COLLATE utf8_unicode_ci NOT NULL,
-  `type` ENUM('web', 'mobile') COLLATE utf8_unicode_ci NOT NULL,
+  `type` ENUM('WEB', 'MOBILE') COLLATE utf8_unicode_ci NOT NULL,
   `url` varchar(2048) COLLATE utf8_unicode_ci DEFAULT NULL,
   `cost` double NOT NULL DEFAULT '0',
   PRIMARY KEY (`id`),

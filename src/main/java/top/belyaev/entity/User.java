@@ -4,13 +4,8 @@ import lombok.Data;
 import lombok.ToString;
 import org.hibernate.annotations.Type;
 
-import javax.persistence.Column;
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
-import javax.persistence.Table;
-import java.util.Date;
+import javax.persistence.*;
+import java.util.*;
 
 @Entity
 @Table(name = "user")
@@ -37,4 +32,8 @@ public class User {
 
     @Column
     private String phone;
+
+    @OneToMany(fetch = FetchType.EAGER, mappedBy = "user", cascade = CascadeType.ALL)
+    private List<TrafficSource> trafficSources = new ArrayList<TrafficSource>();
+
 }

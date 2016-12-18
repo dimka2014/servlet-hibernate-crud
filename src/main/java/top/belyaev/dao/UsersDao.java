@@ -1,8 +1,6 @@
 package top.belyaev.dao;
 
-import org.hibernate.Criteria;
-import org.hibernate.Session;
-import org.hibernate.SessionFactory;
+import org.hibernate.*;
 import top.belyaev.HibernateUtil;
 import top.belyaev.entity.User;
 
@@ -25,8 +23,18 @@ public class UsersDao {
 
     public List<User> findAll() {
         Session session = sessionFactory.getCurrentSession();
-        session.beginTransaction();
+        Transaction transaction = session.beginTransaction();
         Criteria criteria = session.createCriteria(User.class);
-        return  (List<User>) criteria.list();
+        List<User> result = (List<User>) criteria.list();
+        transaction.commit();
+        return result;
+    }
+
+    public User findById(int id) {
+        Session session = sessionFactory.getCurrentSession();
+        Transaction transaction = session.beginTransaction();
+        User user = (User) session.byId(User.class).load(id);
+        transaction.commit();
+        return user;
     }
 }
