@@ -8,7 +8,7 @@ import javax.persistence.*;
 @Table(name = "traffic_source")
 @Data
 public class TrafficSource {
-    enum TrafficSourceType {
+    public enum TrafficSourceType {
         WEB, MOBILE;
     }
 
@@ -28,7 +28,7 @@ public class TrafficSource {
     public String url;
 
     @Column
-    public float cost;
+    public Float cost;
 
     @Column
     @Enumerated(EnumType.STRING)

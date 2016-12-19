@@ -1,14 +1,10 @@
 package top.belyaev.dao;
 
-import org.hibernate.Criteria;
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;
 import org.hibernate.Transaction;
 import top.belyaev.HibernateUtil;
 import top.belyaev.entity.TrafficSource;
-import top.belyaev.entity.User;
-
-import java.util.List;
 
 public class TrafficSourcesDao {
     private static TrafficSourcesDao dao;
@@ -25,12 +21,25 @@ public class TrafficSourcesDao {
 
     private TrafficSourcesDao() {}
 
-    public List<TrafficSource> findAll() {
+    public TrafficSource findById(int id) {
         Session session = sessionFactory.getCurrentSession();
         Transaction transaction = session.beginTransaction();
-        Criteria criteria = session.createCriteria(TrafficSource.class);
-        List<TrafficSource> trafficSources = (List<TrafficSource>) criteria.list();
+        TrafficSource ts = (TrafficSource) session.byId(TrafficSource.class).load(id);
         transaction.commit();
-        return trafficSources;
+        return ts;
+    }
+
+    public void save(TrafficSource trafficSource) {
+        Session session = sessionFactory.getCurrentSession();
+        Transaction transaction = session.beginTransaction();
+        session.saveOrUpdate(trafficSource);
+        transaction.commit();
+    }
+
+    public void delete(TrafficSource trafficSource) {
+        Session session = sessionFactory.getCurrentSession();
+        Transaction transaction = session.beginTransaction();
+        session.delete(trafficSource);
+        transaction.commit();
     }
 }

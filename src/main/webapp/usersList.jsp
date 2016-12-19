@@ -13,9 +13,9 @@
 <div class="container">
 
     <div class="panel panel-default">
-        <div class="panel-heading">
-            <h3>Users</h3>
-            <a class="btn btn-default" href="/users">Create user</a>
+        <div class="panel-heading" style="height: 73px;">
+            <h3 style="float: left;">Users</h3>
+            <a class="btn btn-default" href="/users" style="margin: 16px 0px 0px 17px;">Create user</a>
         </div>
         <div class="panel-body">
             <table class="table table-condensed" style="border-collapse:collapse;">
@@ -54,9 +54,10 @@
                         </td>
                     </tr>
                     <tr>
-
                         <td colspan="8" class="hiddenRow">
                             <div class="accordian-body collapse" id="tableuser${user.getId()}">
+                                <h4 style="float: left;">Traffic cources</h4>
+                                <a class="btn btn-default" href="/traffic-sources?userId=${user.getId()}" style="margin: 2px 0px 0px 12px;">Add</a>
                                 <table class="table table-striped">
                                     <thead>
                                     <tr>
@@ -65,6 +66,8 @@
                                         <th>Type</th>
                                         <th>Url</th>
                                         <th>Cost</th>
+                                        <th>Edit</th>
+                                        <th>Delete</th>
                                     </tr>
                                     </thead>
                                     <tbody>
@@ -75,6 +78,16 @@
                                             <td>${ts.getType()}</td>
                                             <td>${ts.getUrl()}</td>
                                             <td>${ts.getCost()}</td>
+                                            <td>
+                                                <a class="btn btn-default" href="/traffic-sources?tsId=${ts.getId()}">Edit</a>
+                                            </td>
+                                            <td>
+                                                <form action="/delete" method="post">
+                                                    <input name="id" type="hidden" value="${ts.getId()}"/>
+                                                    <input name="type" type="hidden" value="ts"/>
+                                                    <button class="btn btn-default" type="submit">Delete</button>
+                                                </form>
+                                            </td>
                                         </tr>
                                     </c:forEach>
                                     </tbody>

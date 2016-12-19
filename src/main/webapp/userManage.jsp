@@ -35,7 +35,7 @@
                 </div>
             </div>
             <div class="form-group">
-                <label for="birthDate" class="control-label col-xs-3">Birth date</label>
+                <label for="birthDate" class="control-label col-xs-3">Birth date:</label>
                 <div class="col-xs-9">
                     <input type="text" pattern="^\d{4}-\d{2}-\d{2}$" name="birthDate" id="birthDate"
                            class="form-control"

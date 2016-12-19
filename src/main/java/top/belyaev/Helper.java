@@ -1,5 +1,7 @@
 package top.belyaev;
 
+import top.belyaev.entity.TrafficSource;
+
 import javax.servlet.http.HttpServletRequest;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
@@ -14,6 +16,14 @@ public class Helper {
         }
     }
 
+    public static Float requestParameterFloat(HttpServletRequest req, String name) {
+        try {
+            return Float.parseFloat(req.getParameter(name));
+        } catch (NumberFormatException e) {
+            return null;
+        }
+    }
+
     public static Date requestParameterDate(HttpServletRequest req, String name) {
         try {
             SimpleDateFormat formatter = new SimpleDateFormat("yyyy-MM-dd");
@@ -21,5 +31,16 @@ public class Helper {
         } catch (ParseException e) {
             return null;
         }
+    }
+
+    public static TrafficSource.TrafficSourceType requestParameterTsType(HttpServletRequest req, String name) {
+        String parameter = req.getParameter(name);
+        if (parameter.equals("WEB")) {
+            return TrafficSource.TrafficSourceType.WEB;
+        } else if (parameter.equals("MOBILE")) {
+            return TrafficSource.TrafficSourceType.MOBILE;
+        }
+
+        return null;
     }
 }
